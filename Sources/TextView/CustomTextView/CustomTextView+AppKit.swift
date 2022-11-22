@@ -94,7 +94,7 @@ internal final class CustomTextView: NSView {
 
 // MARK: - CustomTextView Interface
 
-internal extension CustomTextView: CustomTextViewInterface {
+extension CustomTextView: CustomTextViewInterface {
     var string: String {
         get {
             wrappedTextView.string
@@ -348,7 +348,7 @@ internal extension CustomTextView: CustomTextViewInterface {
 
 // MARK: - NSTextView Delegate
 
-internal extension CustomTextView: NSTextViewDelegate {
+extension CustomTextView: NSTextViewDelegate {
     func textDidChange(_ notification: Notification) {
         NotificationCenter.default.post(name: CustomTextView.didChangeNotification, object: self)
     }
