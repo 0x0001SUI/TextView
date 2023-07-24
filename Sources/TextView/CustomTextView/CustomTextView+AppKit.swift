@@ -62,7 +62,7 @@ internal final class CustomTextView: NSView {
     private func setupDelegate() {
         NotificationCenter
             .default
-            .publisher(for: CustomTextView.didChangeNotification)
+            .publisher(for: CustomTextView.didChangeNotification, object: self)
             .receive(on: RunLoop.main)
             .sink { [weak self] notification in
                 self?.delegate?.customTextViewDidChange(notification)
@@ -71,7 +71,7 @@ internal final class CustomTextView: NSView {
         
         NotificationCenter
             .default
-            .publisher(for: CustomTextView.didBeginEditingNotification)
+            .publisher(for: CustomTextView.didBeginEditingNotification, object: self)
             .receive(on: RunLoop.main)
             .sink { [weak self] notification in
                 self?.delegate?.customTextViewDidBeginEditing(notification)
@@ -80,7 +80,7 @@ internal final class CustomTextView: NSView {
         
         NotificationCenter
             .default
-            .publisher(for: CustomTextView.didEndEditingNotification)
+            .publisher(for: CustomTextView.didEndEditingNotification, object: self)
             .receive(on: RunLoop.main)
             .sink { [weak self] notification in
                 self?.delegate?.customTextViewDidEndEditing(notification)
