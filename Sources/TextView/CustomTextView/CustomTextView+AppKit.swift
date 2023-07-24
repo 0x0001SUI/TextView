@@ -15,7 +15,16 @@ internal class CustomNSTextView: NSTextView {
     override class var defaultMenu: NSMenu? {
         nil
     }
+    
+    override func mouseMoved(with event: NSEvent) {
+        cursor.set()
+    }
+    
+    private var cursor: NSCursor {
+        isEditable ? .iBeam : .arrow
+    }
 }
+
 
 internal final class CustomTextView: NSView {
     weak var delegate: CustomTextViewDelegate?
